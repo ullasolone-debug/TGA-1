@@ -9,7 +9,7 @@
 Пользователь  несёт полную ответственность за последствия использования данного устройства и должен понимать все риски его применения!
 
 
-# TGA-1 "CANARY"
+# TG-1 "CANARY"
 
 The TG-1 "CANARY" is an Arduino-based gas leak detector designed for home gas fitting leak testing.
 
