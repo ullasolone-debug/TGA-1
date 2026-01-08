@@ -1,0 +1,43 @@
+Описание проекта
+Этот проект представляет собой систему для определения концентрации природного газа (метана) с использованием датчика MQ-6, подключенного к Arduino Nano. Концентрация отображается на OLED-дисплее (SSD1306, 128x64 пикселей, интерфейс I2C) в единицах PPM (частей на миллион).
+Скетч включает:
+Калибровку датчика в чистом воздухе для расчёта базового сопротивления R0.
+Постоянное чтение данных с аналогового выхода датчика.
+Расчёт концентрации газа на основе кривой чувствительности MQ-6 (приближённо для сжиженного газа, но адаптировано для природного газа; для большей точности используйте MQ-4 или MQ-5).
+Вывод результата на дисплей с минимальной яркостью (контраст установлен на 1 для энергосбережения).
+Датчик требует предварительного прогрева не менее 10-15 для стабильности.
+Предупреждение: Это приближённая модель. Для реального использования в безопасности калибруйте датчик профессионально и учитывайте данные из даташита MQ-6. Не используйте для критических систем без сертификации.
+Пины подключения
+Датчик MQ-6:
+VCC: Подключите к 5V на Arduino Nano.
+GND: Подключите к GND на Arduino Nano.
+AOUT (аналоговый выход): Подключите к A0 на Arduino Nano.
+DOUT (цифровой выход): Не используется в этом скетче (опционально для порогового сигнала).
+OLED-дисплей (I2C, адрес 0x3C):
+VCC: Подключите к 3.3V или 5V на Arduino Nano (в зависимости от модели дисплея; SSD1306 обычно работает от 3.3V, но многие модули имеют регулятор для 5V).
+GND: Подключите к GND на Arduino Nano.
+SDA: Подключите к A4 на Arduino Nano (стандартный пин SDA для I2C).
+SCL: Подключите к A5 на Arduino Nano (стандартный пин SCL для I2C).
+Убедитесь, что резистор нагрузки (RL) для датчика MQ-6 составляет 20 кОм (как указано в коде; проверьте даташит). Установите библиотеки Adafruit GFX и Adafruit SSD1306 через менеджер библиотек Arduino IDE. Если дисплей имеет другой адрес I2C (например, 0x3D), измените в коде.
+
+Project Description
+This project is a system for measuring natural gas (methane) concentration using an MQ-6 sensor connected to an Arduino Nano. The concentration is displayed on an OLED display (SSD1306, 128x64 pixels, I2C interface) in PPM (parts per million).
+The sketch includes:
+Calibration of the sensor in clean air to calculate the base resistance R0.
+Continuous reading of data from the sensor's analog output.
+Calculation of gas concentration based on the MQ-6 sensitivity curve (approximately for liquefied gas, but adapted for natural gas; for greater accuracy, use the MQ-4 or MQ-5).
+The result is displayed on the display at minimum brightness (contrast set to 1 for power saving).
+The sensor requires a preheat period of at least 24 hours to achieve stability.
+Disclaimer: This is an approximate model.  For real-world safety use, calibrate the sensor professionally and refer to the MQ-6 datasheet. Do not use in critical systems without certification.
+Connection Pins
+MQ-6 Sensor:
+VCC: Connect to 5V on the Arduino Nano.
+GND: Connect to GND on the Arduino Nano.
+AOUT (Analog Output): Connect to A0 on the Arduino Nano.
+DOUT (Digital Output): Not used in this sketch (optional for threshold signal).
+OLED Display (I2C, address 0x3C):
+VCC: Connect to 3.3V or 5V on the Arduino Nano (depending on the display model; the SSD1306 typically operates from 3.3V, but many modules have a 5V regulator).
+GND: Connect to GND on the Arduino Nano.
+ SDA: Connect to A4 on the Arduino Nano (standard SDA pin for I2C).
+SCL: Connect to A5 on the Arduino Nano (standard SCL pin for I2C).
+Ensure the load resistor (RL) for the MQ-6 sensor is 20 kOhm (as specified in the code; check the datasheet). Install the Adafruit GFX and Adafruit SSD1306 libraries using the Arduino IDE library manager. If the display has a different I2C address (e.g., 0x3D), adjust the code accordingly.
